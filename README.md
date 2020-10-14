@@ -84,7 +84,11 @@ The included pages contain several examples:
   Check `src/main/js/common/api.js` for some examples.
 * **Measure helpers (`window.SonarMeasures`)**  
   Check `src/main/js/portfolio_page/components/MeasuresHistory.js` for some examples.
-* **React Components (`window.SonarComponents`)**  
-  Check `src/main/js/portfolio_page/components/MeasuresHistory.js`, `src/main/js/portfolio_page/components/VersionsMeasuresHistoryApp.js` and `src/main/js/admin_page/components/InstanceStatisticsApp.js` for some examples.
+*
 * **Localization (`window.t()` and `window.tp()`)**  
   Localizable UI strings are defined in `src/main/resources/org/sonar/l10n/example/`. They are loaded at startup time, and can used by the global `t()` and `tp()` functions. See `src/main/js/admin_page/components/InstanceStatisticsApp.js` and `src/main/js/portfolio_page/components/VersionsMeasuresHistoryApp.js` for some examples. 
+
+TODO: Update
+
+ **React Components (`window.SonarComponents`)**  
+  Check `src/main/js/portfolio_page/components/MeasuresHistory.js`, `src/main/js/portfolio_page/components/VersionsMeasuresHistoryApp.js` and `src/main/js/admin_page/components/InstanceStatisticsApp.js` for some examples.

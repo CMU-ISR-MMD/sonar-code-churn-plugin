@@ -17,9 +17,6 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 import React from "react";
-// SonarComponents (referenced as sonar-components here, see the Webpack config)
-// exposes React components exposed by SonarQube.
-import { Level, Rating } from "sonar-components";
 // SonarMeasures (referenced as sonar-measures here, see the Webpack config)
 // exposes helper functions for formatting and handling measure values.
 import { formatMeasure } from "sonar-measures";
@@ -30,7 +27,7 @@ export default function MeasuresHistory(props) {
       <td className="thin nowrap text-center">
         <div className="code-components-cell">
           <span>
-            <Level level={props.measure.alert_status || "OK"} />
+            {props.measure.alert_status || "OK"}
           </span>
         </div>
       </td>
@@ -40,7 +37,7 @@ export default function MeasuresHistory(props) {
       <td className="thin nowrap text-right">
         <div className="code-components-cell">
           <span>
-            <Rating value={props.measure.reliability_rating || 1} />
+            {formatRating(props.measure.reliability_rating || 1)}
           </span>
         </div>
       </td>
@@ -52,7 +49,7 @@ export default function MeasuresHistory(props) {
       <td className="thin nowrap text-right">
         <div className="code-components-cell">
           <span>
-            <Rating value={props.measure.security_rating || 1} />
+          {formatRating(props.measure.security_rating || 1)}
           </span>
         </div>
       </td>
@@ -62,10 +59,14 @@ export default function MeasuresHistory(props) {
       <td className="thin nowrap text-right">
         <div className="code-components-cell">
           <span>
-            <Rating value={props.measure.sqale_rating || 1} />
+          {formatRating(props.measure.sqale_rating || 1)}
           </span>
         </div>
       </td>
     </tr>
   );
+}
+
+function formatRating(rating: number) {
+  return String.fromCharCode('A'.charCodeAt(0) - 1 + +rating);
 }
