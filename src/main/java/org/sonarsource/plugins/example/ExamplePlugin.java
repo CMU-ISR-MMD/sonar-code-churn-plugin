@@ -33,6 +33,8 @@ import org.sonarsource.plugins.example.rules.CreateIssuesOnJavaFilesSensor;
 import org.sonarsource.plugins.example.rules.FooLintIssuesLoaderSensor;
 import org.sonarsource.plugins.example.rules.FooLintRulesDefinition;
 import org.sonarsource.plugins.example.rules.JavaRulesDefinition;
+import org.sonarsource.plugins.example.scm.ScmMetrics;
+import org.sonarsource.plugins.example.scm.SetStringMetricOnFilesSensor;
 import org.sonarsource.plugins.example.settings.FooLanguageProperties;
 import org.sonarsource.plugins.example.settings.HelloWorldProperties;
 import org.sonarsource.plugins.example.settings.SayHelloFromScanner;
@@ -45,32 +47,34 @@ import static java.util.Arrays.asList;
  */
 public class ExamplePlugin implements Plugin {
 
-  @Override
-  public void define(Context context) {
-    // tutorial on hooks
-    // http://docs.sonarqube.org/display/DEV/Adding+Hooks
+    @Override
+    public void define(Context context) {
+        // tutorial on hooks
+        // http://docs.sonarqube.org/display/DEV/Adding+Hooks
 //    context.addExtensions(DisplayIssuesInScanner.class, DisplayQualityGateStatus.class);
 
-    // tutorial on languages
+        // tutorial on languages
 //    context.addExtensions(FooLanguage.class, FooQualityProfile.class);
 //    context.addExtension(FooLanguageProperties.getProperties());
 
-    // tutorial on measures
-    context
-      .addExtensions(ExampleMetrics.class, SetSizeOnFilesSensor.class, ComputeSizeAverage.class, ComputeSizeRating.class);
+        // tutorial on measures
+        context
+                .addExtensions(ExampleMetrics.class, SetSizeOnFilesSensor.class, ComputeSizeAverage.class, ComputeSizeRating.class);
 
+        // tutorial on measures
+        context
+                .addExtensions(ScmMetrics.class, SetStringMetricOnFilesSensor.class);
 
-
-    // tutorial on rules
+        // tutorial on rules
 //    context.addExtensions(JavaRulesDefinition.class, CreateIssuesOnJavaFilesSensor.class);
 //    context.addExtensions(FooLintRulesDefinition.class, FooLintIssuesLoaderSensor.class);
 
-    // tutorial on settings
-    context
-      .addExtensions(HelloWorldProperties.getProperties())
-      .addExtension(SayHelloFromScanner.class);
+        // tutorial on settings
+        context
+                .addExtensions(HelloWorldProperties.getProperties())
+                .addExtension(SayHelloFromScanner.class);
 
-    // tutorial on web extensions
+        // tutorial on web extensions
 //    context.addExtension(MyPluginPageDefinition.class);
 
 //    context.addExtensions(asList(
@@ -80,5 +84,5 @@ public class ExamplePlugin implements Plugin {
 //        .category("FooLint")
 //        .defaultValue("")
 //        .build()));
-  }
+    }
 }
