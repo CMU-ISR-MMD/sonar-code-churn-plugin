@@ -33,6 +33,8 @@ import org.sonarsource.plugins.example.rules.CreateIssuesOnJavaFilesSensor;
 import org.sonarsource.plugins.example.rules.FooLintIssuesLoaderSensor;
 import org.sonarsource.plugins.example.rules.FooLintRulesDefinition;
 import org.sonarsource.plugins.example.rules.JavaRulesDefinition;
+import org.sonarsource.plugins.example.scm.CommitHistoryComputer;
+import org.sonarsource.plugins.example.scm.CommitHistorySensor;
 import org.sonarsource.plugins.example.scm.ScmMetrics;
 import org.sonarsource.plugins.example.scm.SetStringMetricOnFilesSensor;
 import org.sonarsource.plugins.example.settings.FooLanguageProperties;
@@ -63,7 +65,7 @@ public class ExamplePlugin implements Plugin {
 
         // tutorial on measures
         context
-                .addExtensions(ScmMetrics.class, SetStringMetricOnFilesSensor.class);
+                .addExtensions(ScmMetrics.class, SetStringMetricOnFilesSensor.class, CommitHistorySensor.class, CommitHistoryComputer.class);
 
         // tutorial on rules
 //    context.addExtensions(JavaRulesDefinition.class, CreateIssuesOnJavaFilesSensor.class);

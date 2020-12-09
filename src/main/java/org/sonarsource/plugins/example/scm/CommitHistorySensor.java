@@ -37,6 +37,8 @@ public class CommitHistorySensor implements Sensor {
             commitHistoryJson = "[]";
         }
 
+        Loggers.get(getClass()).info("CommitHistorySensor is executing, and the length of commitHistory is: " + commitHistoryJson.length());
+
         context.<String>newMeasure()
                 .forMetric(COMMIT_HISTORY)
                 .on(context.module())
