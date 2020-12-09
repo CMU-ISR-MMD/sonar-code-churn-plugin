@@ -49,19 +49,21 @@ public class ExamplePlugin implements Plugin {
   public void define(Context context) {
     // tutorial on hooks
     // http://docs.sonarqube.org/display/DEV/Adding+Hooks
-    context.addExtensions(DisplayIssuesInScanner.class, DisplayQualityGateStatus.class);
+//    context.addExtensions(DisplayIssuesInScanner.class, DisplayQualityGateStatus.class);
 
     // tutorial on languages
-    context.addExtensions(FooLanguage.class, FooQualityProfile.class);
-    context.addExtension(FooLanguageProperties.getProperties());
+//    context.addExtensions(FooLanguage.class, FooQualityProfile.class);
+//    context.addExtension(FooLanguageProperties.getProperties());
 
     // tutorial on measures
     context
       .addExtensions(ExampleMetrics.class, SetSizeOnFilesSensor.class, ComputeSizeAverage.class, ComputeSizeRating.class);
 
+
+
     // tutorial on rules
-    context.addExtensions(JavaRulesDefinition.class, CreateIssuesOnJavaFilesSensor.class);
-    context.addExtensions(FooLintRulesDefinition.class, FooLintIssuesLoaderSensor.class);
+//    context.addExtensions(JavaRulesDefinition.class, CreateIssuesOnJavaFilesSensor.class);
+//    context.addExtensions(FooLintRulesDefinition.class, FooLintIssuesLoaderSensor.class);
 
     // tutorial on settings
     context
@@ -69,14 +71,14 @@ public class ExamplePlugin implements Plugin {
       .addExtension(SayHelloFromScanner.class);
 
     // tutorial on web extensions
-    context.addExtension(MyPluginPageDefinition.class);
+//    context.addExtension(MyPluginPageDefinition.class);
 
-    context.addExtensions(asList(
-      PropertyDefinition.builder("sonar.foo.file.suffixes")
-        .name("Suffixes FooLint")
-        .description("Suffixes supported by FooLint")
-        .category("FooLint")
-        .defaultValue("")
-        .build()));
+//    context.addExtensions(asList(
+//      PropertyDefinition.builder("sonar.foo.file.suffixes")
+//        .name("Suffixes FooLint")
+//        .description("Suffixes supported by FooLint")
+//        .category("FooLint")
+//        .defaultValue("")
+//        .build()));
   }
 }
