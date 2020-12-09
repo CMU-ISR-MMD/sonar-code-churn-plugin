@@ -16,14 +16,14 @@ public class ScmMetrics implements Metrics {
             .setDescription("History of commits")
             .setDirection(Metric.DIRECTION_NONE)
             .setQualitative(false)
-            .setDomain(CoreMetrics.DOMAIN_GENERAL)
+            .setDomain(CoreMetrics.DOMAIN_SCM)
             .create();
 
     public static final Metric<String> CODE_CHURN_HISTORY = new Metric.Builder("code_churn_history", "Code Churn History", Metric.ValueType.STRING)
             .setDescription("History of code churn")
             .setDirection(Metric.DIRECTION_NONE)
             .setQualitative(false)
-            .setDomain(CoreMetrics.DOMAIN_GENERAL)
+            .setDomain(CoreMetrics.DOMAIN_SCM)
             .create();
 
     public static final Metric<String> STRING_METRIC_TEST = new Metric.Builder("string_metric_test", "String Metric Test", Metric.ValueType.STRING)
