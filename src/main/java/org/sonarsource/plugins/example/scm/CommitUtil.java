@@ -47,10 +47,12 @@ public class CommitUtil {
 
         Iterable<RevCommit> commits = git.log().all().call();
         int count = 0;
+        int sha1Start = 7;
+        int sha1End = 15;
         for (RevCommit commit : commits) {
             if (commit.getParentCount() == 1) {
                 DiffResult diffResult = diffCommits(git, commit, commit.getParent(0));
-                SimpleCommit sc = new SimpleCommit(commit.getId().toString().substring(0, 8), commit.getCommitTime(), diffResult.linesAdded, diffResult.lineDeleted);
+                SimpleCommit sc = new SimpleCommit(commit.getId().toString().substring(sha1Start, sha1End), commit.getCommitTime(), diffResult.linesAdded, diffResult.lineDeleted);
                 simpleCommitList.add(sc);
             }
             count++;
