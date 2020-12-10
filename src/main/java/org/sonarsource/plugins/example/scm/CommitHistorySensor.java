@@ -18,7 +18,7 @@ import static org.sonarsource.plugins.example.scm.ScmMetrics.STRING_METRIC_TEST;
 public class CommitHistorySensor implements Sensor {
     @Override
     public void describe(SensorDescriptor sensorDescriptor) {
-        sensorDescriptor.name("Get commit history and pass is to measure computer");
+        sensorDescriptor.name("Get commit history and pass it to measure computer");
     }
 
     @Override

@@ -25,9 +25,19 @@ public class CommitUtil {
 
     public static String establishCommitHistory(String gitPath) throws IOException, GitAPIException {
         // PART 0. preparation
-        Repository repository = new FileRepositoryBuilder()
-                .findGitDir(new File(gitPath))
-                .build();
+        if (gitPath.contains("\\")) {
+            gitPath = gitPath.replaceAll("\\\\", "/");
+        }
+
+        Repository repository = null;
+        try {
+            repository = new FileRepositoryBuilder()
+                    .findGitDir(new File(gitPath))
+                    .build();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return "[]";
+        }
         Git git = new Git(repository);
 
         // PART 1. iterates over commits on all branches
@@ -128,6 +138,10 @@ public class CommitUtil {
         //        System.out.println("lines added: " + linesAdded + ", lines deleted: " + linesDeleted + " ,files changed: " + filesChanged);
 
         return new DiffResult(linesAdded, linesDeleted, filesChanged);
+    }
+
+    public static void main(String[] args) throws IOException, GitAPIException {
+        establishCommitHistory("D:\\WebstormProjects\\ss_project4");
     }
 
 //    public static void main(String[] args) throws IOException, GitAPIException {
