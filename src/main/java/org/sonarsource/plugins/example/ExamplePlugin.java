@@ -65,7 +65,7 @@ public class ExamplePlugin implements Plugin {
 
         // tutorial on measures
         context
-                .addExtensions(ScmMetrics.class, SetStringMetricOnFilesSensor.class, CommitHistorySensor.class, CommitHistoryComputer.class);
+                .addExtensions(ScmMetrics.class, CommitHistorySensor.class, CommitHistoryComputer.class);
 
         // tutorial on rules
 //    context.addExtensions(JavaRulesDefinition.class, CreateIssuesOnJavaFilesSensor.class);
