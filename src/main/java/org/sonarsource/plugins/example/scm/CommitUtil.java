@@ -1,6 +1,7 @@
 package org.sonarsource.plugins.example.scm;
 
 
+import com.alibaba.fastjson.JSON;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.diff.DiffEntry;
@@ -15,6 +16,7 @@ import org.sonar.api.internal.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -53,7 +55,7 @@ public class CommitUtil {
             }
             count++;
         }
-        return new Gson().toJson(simpleCommitList);
+        return JSON.toJSONString(simpleCommitList);
     }
 
     private static Repository findRepo(String path) throws IOException {
@@ -63,7 +65,7 @@ public class CommitUtil {
         return repository;
     }
 
-    public static class SimpleCommit {
+    public static class SimpleCommit implements Serializable {
         String id;
         int ts;
         int la;
@@ -76,6 +78,38 @@ public class CommitUtil {
             this.la = linesAdded;
             this.ld = lineDeleted;
 //            this.filesChanged = filesChanged;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public int getTs() {
+            return ts;
+        }
+
+        public void setTs(int ts) {
+            this.ts = ts;
+        }
+
+        public int getLa() {
+            return la;
+        }
+
+        public void setLa(int la) {
+            this.la = la;
+        }
+
+        public int getLd() {
+            return ld;
+        }
+
+        public void setLd(int ld) {
+            this.ld = ld;
         }
     }
 
@@ -141,7 +175,9 @@ public class CommitUtil {
     }
 
     public static void main(String[] args) throws IOException, GitAPIException {
-        establishCommitHistory("D:\\WebstormProjects\\ss_project4");
+        // D:/IdeaProjects/mmd-restful-backend/src/main/resources
+        String res = establishCommitHistory("D:/IdeaProjects/mmd-restful-backend/src/main/resources");
+        System.out.println(res);
     }
 
 //    public static void main(String[] args) throws IOException, GitAPIException {
